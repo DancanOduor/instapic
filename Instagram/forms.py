@@ -114,7 +114,7 @@ class AjaxSavePhoto(Ajax):
 
 		main_colour = ""
 		if data["main_colors"] != []:
-			#main_colour = data["main_colors"][randint(0, 2)]
+			main_colour = data["main_colors"][randint(0, 2)]
 			for colour in data["main_colors"][randint(0, 2)]:
 				main_colour = main_colour + str(colour) + ","
 			main_colour = main_colour[:-1]
