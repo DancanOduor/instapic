@@ -17,6 +17,7 @@
 <body>
     <div class="login-clean">
         <form method="post">
+                {% csrf_token %}
             <h2 class="sr-only">Login Form</h2>
             <div class="illustration">
                 <div class="well form-error-message"><span>Username or password incorrect </span></div><img src="assets/img/logo.jpg"></div>

@@ -1,6 +1,4 @@
 from django.db import models
-from pyuploadcare.dj.models import ImageField
-from django.db import models
 
 class User(models.Model):
 	is_authenticated = True
