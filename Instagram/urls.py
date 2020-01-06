@@ -30,7 +30,7 @@ urlpatterns = [
     url(r'^sign-up/$', views.signup),
     url(r'^logout$', views.logout),
     url(r'^(?P<username>[a-zA-Z0-9_]+)$', views.profile),
-    url(r'^ajax-sign-up$', views.ajaxsignup),
+    url(r'^sign-up/ajax-sign-up$', views.ajaxsignup),
     url(r'^ajax-login$', views.ajaxlogin),
     url(r'^ajax-save-photo$', views.ajaxsavephoto),
     url(r'^ajax-set-profile-pic$', views.ajaxsetprofilepic),
