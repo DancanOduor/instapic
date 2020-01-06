@@ -9,6 +9,8 @@ from random import randint
 import json, re
 
 class Ajax(forms.Form):
+
+	
 	args = []
 	user = []
 
