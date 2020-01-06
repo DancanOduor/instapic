@@ -10,7 +10,6 @@
     <link rel="stylesheet" href='{% static "assets/css/Login-Form-Clean.css" %}'>
     <link rel="stylesheet" href='{% static "assets/css/styles.css" %}'>
     <script src='{% static "assets/js/jquery.min.js" %}'></script>
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 
@@ -22,14 +21,9 @@
                     {% csrf_token %}
                     <h2 class="sr-only">Login Form</h2>
                     <div class="illustration">
-
-
-
-
                         <div class="logo">
                                 <div style="display: none" id="errors" class="well form-error-message"></div>
                                 <img src="{% static 'assets/img/logo.jpg' %}">
-                            <!-- <div style="display: none" id="errors" class="well form-error-message"></div> -->
                         </div>
                     <div class="form-group" style="position:relative;">
                         <input class="form-control" id="email" type="email" name="email" placeholder=" email">
@@ -41,12 +35,7 @@
                         <button class="btn btn-primary btn-block" id="go" type="submit">Log In</button>
                     </div><a href="/sign-up/" class="forgot">Create acount?</a>
                 </form>
-
-
-
         </div>
-
-
     </div>
     <script src='{% static "assets/js/jquery.min.js" %}'></script>
     <script src='{% static "assets/bootstrap/js/bootstrap.min.js" %}'></script>
@@ -61,7 +50,7 @@
     },
     function(data, status){
 	if (JSON.parse(data).Status == 'Success') {
-		window.location = 'sign-up';
+		window.location = 'logged-in-index.html';
 	} else {
 		$('#errors').html("<span>" + JSON.parse(data).Message + "</span>")
 		$('#errors').css('display', 'block')
