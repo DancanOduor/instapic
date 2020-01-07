@@ -87,8 +87,8 @@ WSGI_APPLICATION = 'Instagram.wsgi.application'
 
 DATABASES = {
     'default': {
-        # 'ENGINE': 'django.db.backends.sqlite3',
-        # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         'ENGINE': 'django.db.backends.postgresql',
         # 'ENGINE': 'django.db.backends.mysql',
         'NAME' : 'instapic',  
@@ -188,11 +188,3 @@ PASSWORD_HASHERS = (
 )
 
 AUTHENTICATION_BACKENDS = ( 'Instagram.authb.AuthB', )
-
-    
-
-# STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'static')
-
-
-LOGIN_REDIRECT_URL = '/'
-# AUTH_USER_MODEL = 'registration'

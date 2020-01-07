@@ -48,7 +48,7 @@ def ajaxlogin(request):
 	logged_in_user, output = ajax.validate()
 	if logged_in_user != None:
 		login(request, logged_in_user)
-	context = {'ajax_output': output}
+	context = {'ajax_output':output}
 	return render(request, 'ajax.html', context)
 
 def signup(request):
