@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from .models import User, Photo, Followers
 from .forms import *
 from django.contrib.auth import authenticate, login, logout as dlogout
+from django.http import HttpResponse
 
 def ajaxsignup(request):
 	ajax = AjaxSignUp(request.POST)
@@ -11,6 +12,8 @@ def ajaxsignup(request):
 def ajaxsavephoto(request):
 	ajax = AjaxSavePhoto(request.POST, request.user)
 	context = { 'ajax_output': ajax.output() }
+	print(request.user)
+	
 	return render(request, 'ajax.html', context)
 
 def ajaxlikephoto(request):
@@ -55,6 +58,33 @@ def signup(request):
 	context = {}
 	return render(request, 'sign-up.html', context)
 
+def logged(request):
+	return render(request, 'logged.html')
+
+def loggedprofile(request):
+	return render(request, 'loggedprofile.html')
+
+	
+def ajaxlogged(request):
+	ajax = AjaxLogin(request.GET)
+	logged_in_user, output = ajax.validate()
+	if logged_in_user != None:
+		login(request, logged_in_user)
+	context = {'ajax_output':output}
+	return render(request, 'ajax.html', context)
+
+
+
+def ajaxloggedprofile(request):
+	ajax = AjaxLogin(request.GET)
+	logged_in_user, output = ajax.validate()
+	if logged_in_user != None:
+		login(request, logged_in_user)
+	context = {'ajax_output':output}
+	return render(request, 'ajax.html', context)
+
+
+
 def home(request):
 	context = {}
 	if request.user.is_authenticated:
@@ -62,7 +92,7 @@ def home(request):
 		if u.profilepic == "":
 			u.profilepic = "static/assets/img/default.png"
 		context = { 'user': request.user, 'ProfilePic': u.profilepic }
-		return render(request, 'logged-in-index.html', context)
+		return redirect(request, 'logged.html')
 
 	return render(request, 'index.html', context)
 
@@ -78,7 +108,7 @@ def profile(request, username):
 			u.profilepic = "static/assets/img/default.png"
 		context = { "ProfilePic": u.profilepic, "whosprofile": username, "logged_in_as": request.user.username, "following": following }
 		if request.user.is_authenticated:
-			return render(request, 'logged-in-profile.html', context)
+			return render(request, 'loggedprofile.html', context)
 		return render(request, 'profile.html', context)
 	else:
 		return redirect(home)

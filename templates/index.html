@@ -52,7 +52,7 @@
 
     function(data, status){
 	if (JSON.parse(data).Status == 'Success') {
-		window.location = '';
+		window.location = 'logged';
 	} else {
 		$('#errors').html("<span>" + JSON.parse(data).Message + "</span>")
 		$('#errors').css('display', 'block')

@@ -100,16 +100,16 @@ class AjaxSavePhoto(Ajax):
 			self.caption = self.args[0]["caption"]
 		except Exception as e:
 			return self.error("Malformed request, did not process.")
-
+		print(self.user)
 		if self.user == "NL":
 			return self.error("Unauthorised request.")
 
 		if len(self.caption) > 140:
 				return self.error("Caption must be 140 characters.")
-
+		
 		if self.url[0:20] != "https://ucarecdn.com" or self.baseurl[0:20] != "https://ucarecdn.com":
 			return self.error("Invalid image URL")
-
+		
 		result = urlopen(self.baseurl+"-/preview/-/main_colors/3/")
 		data = result.read()
 		data = json.loads(data.decode('utf-8'))
@@ -127,7 +127,9 @@ class AjaxSavePhoto(Ajax):
 
 		tag_count = 0
 		p = Photo(url=self.url, baseurl=self.baseurl, owner=self.user.username, likes=0, caption=self.caption, main_colour=main_colour)
+		
 		p.save()
+		
 		if data["faces"] != []:
 			for face in data["faces"]:
 				tag = PhotoTag(photoid=p.id, coords=face).save()

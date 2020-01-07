@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
-import sys
+# import sys
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -75,7 +75,7 @@ TEMPLATES = [
 
 UPLOADCARE = {
     'pub_key': '7bad302b223eecb3a6b8',
-    'secret': 'b099e6ad4c84d98841d9',
+    'secret': '7ffa2d4b64463e880670',
 }
 
 
@@ -139,11 +139,6 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-
-
-
-
-
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
@@ -188,3 +183,12 @@ PASSWORD_HASHERS = (
 )
 
 AUTHENTICATION_BACKENDS = ( 'Instagram.authb.AuthB', )
+
+
+
+# import django_database_url
+# db_from_env = dj_database_url.config(conn_max_age=500)
+# DATABASES['default'].update(db_from_env)
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
