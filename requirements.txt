@@ -8,7 +8,7 @@ django-bootstrap3==12.0.3
 idna==2.8
 mysql-connector-python==8.0.18
 pkg-resources==0.0.0
-protobuf==3.11.2
+protobuf==3.18.3
 psycopg2==2.8.4
 psycopg2-binary==2.8.4
 PyMySQL==0.9.3
